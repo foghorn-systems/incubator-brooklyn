@@ -706,15 +706,17 @@ public class BrooklynLauncher {
     }
     
     private void checkFilePermissionsX00(String file) {
+        
         File f = new File(Os.tidyPath(file));
         
         Maybe<String> permission = FileUtil.getFilePermissions(f);
         if (permission.isAbsent()) {
             LOG.debug("Could not determine permissions of file; assuming ok: "+f);
         } else {
-            if (!permission.get().subSequence(4, 10).equals("------")) {
-                throw new FatalRuntimeException("Invalid permissions for file "+file+"; expected ?00 but was "+permission.get());
-            }
+            
+            //if (!permission.get().subSequence(4, 10).equals("------")) {
+            //    throw new FatalRuntimeException("Invalid permissions for file "+file+"; expected ?00 but was "+permission.get());
+            //}
         }
     }
     
